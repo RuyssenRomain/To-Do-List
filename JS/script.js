@@ -17,9 +17,11 @@
 
             //  creer un nouvel element li
               let newTodo = document.createElement('li');
+              let id = Date.now();
+              let checkboxId = `todo-${id}`;
               newTodo.innerHTML = `
-                    <input type="checkbox" class="toggle-completed" id="todo-${Date.now()}">
-                    <label for="todo-${Date.now()}">${taskText}</label>
+                    <input type="checkbox" class="toggle-completed" id="${checkboxId}">
+                    <label for="${checkboxId}">${taskText}</label>
                     <button class="delete-btn">X</button>"`
               todos.appendChild(newTodo);
 
