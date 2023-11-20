@@ -1,0 +1,11 @@
+@use '../utils/variables' as var;
+.task {
+    color: var.$color-li; 
+    text-shadow: var.$txt-shadow-li;
+    margin-bottom: var.$bottom-li;
+    transition: var.$transition-bg-color;
+  }
+  
+  &:hover {
+    background-color:var.$bg-color-li;
+  }

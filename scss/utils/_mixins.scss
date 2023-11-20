@@ -1,0 +1,21 @@
+// _mixins.scss
+@mixin img-background($image, $bg-pos, $bg-size) {
+  background: url(#{$image}) no-repeat;
+  background-position: $bg-pos;
+  background-size: $bg-size;
+}
+
+@mixin absolute-el($top, $right, $bottom, $left, $x, $y) {
+  position: absolute;
+  top: $top;
+  right: $right;
+  bottom: $bottom;  
+  left: $left;
+  transform: translate($x, $y);
+}
+
+@mixin pseudo-el ($content: '', $pos: absolute, $display: block) {
+  content: $content;
+  position: $pos;
+  display: $display;
+}

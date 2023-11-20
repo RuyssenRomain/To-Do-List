@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="./assets/css/custom.css">
+    <title>To do list </title>
+</head>
+<body>
+    <div class="container">
+        <!--to do list partie création tache -->
+        <h1>To do list</h1>
+        <div class="container_task ">
+            <input id="input_task" type="text" placeholder="Nouvelle tache ">
+            <button type="button" class="button_task" id="add_button">ajouter
+                <i class="fa fa-plus-circle"></i>
+            </button>
+        </div>
+        <!--création des differents filtres pour filtrer -->
+        <div class="filter__container">
+            <span class="filter"data-filter='all'>all</span>
+            <span class="filter"data-filter='completed'>completed</span>
+            <span class="filter"data-filter='delete'>delete</span>
+        </div>
+        <!--  ul=> va recevoir toute les li generer pour chaques taches -->
+        <div class="todos-container">
+            <ul class="todos"></ul>
+          </div>
+    </div>
+    <script src="./JS/script.js"></script>
+</body>
+</html>
+
+

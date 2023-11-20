@@ -1,0 +1,101 @@
+@use '../utils/recup';
+
+.container {
+    @extend %flex-center;
+    flex-direction: column;
+    background-color: recup.$bg-color-container;
+    backdrop-filter: recup.$blur-container;
+    box-shadow: recup.$shadow-container;
+    border-radius: recup.$radius-container;
+    padding: recup.$padding-container;
+    width: recup.$width-container; 
+    
+}
+
+
+
+    h1::before {
+        @include recup.pseudo-el;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        transform: translate(-50%, -50%);
+        width: 100%;
+		height: 4px;
+        transform: scaleX(0);
+		transition: transform 0.3s ease-in-out;
+		background-color: recup.$bg-color-before;
+		transform-origin: center;
+}
+
+// effet survol  de to do list
+h1:hover     {
+    transform: translateY(-10%);
+} 
+h1:hover::before { 
+    transform: scaleX(1);
+}
+.button_task {
+        position: relative;
+        background-color: recup.$bg-button; /* Une couleur verte pour s'assortir avec la nature */
+        color: recup.$color-txt-button; /* Texte blanc pour le contraste */
+        padding: 10px; /* Padding pour rendre le bouton plus grand et plus lisible */
+        border-radius: 50%; /* Bords arrondis */
+        box-shadow: 0 2px 5px rgba(0,0,0,0.2); /* Ombre subtile pour donner de la profondeur */
+        transition: recup.$transition-bg-color; /* Transition pour les interactions de survol */
+        @extend %button-cursor;
+        @extend %button-border;
+        
+        &:hover {
+            background-color: recup.$bg-button-hover;
+        }
+        
+        &:active {
+            box-shadow:recup.$effect-active; /* Effet enfoncé lors du clic */
+            transform: translateY(0.9px);
+        }
+        .fa-plus-circle {
+            font-size: recup.$size-fa;
+            color: recup.$color-fa; 
+            vertical-align: middle;
+        }
+    }
+
+    .container_task {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 25px;
+        width: 70%;
+    }
+
+    #input_task {
+     @extend %button-outline;
+     flex: 1;
+     outline: none;
+     padding: 10px 10px 10px 20px;
+     background-color: recup.$bg-color-input;
+     border: 2px solid recup.$color-border-input;
+     border-radius: 30px;
+     color: recup.$color-txt-input;
+     font-size: 16px;
+     margin-right: 10px;
+     transition:  background 0.3s ease-in-out;
+     
+            &::placeholder {
+                color:recup.$color-placeholder;
+            }
+            &:focus {
+                background-color: recup.$bg-input-hov;
+                color: recup.$color-txt-hov;
+                border-color: opacify(recup.$color-base-marron, 0.1); /*augmente opacité de 10% */
+                box-shadow: 0 0 8px transparentize(recup.$color-base-marron, 0.3);
+                }  
+            &:hover {
+                background-color: recup.$bg-input-hov;
+                color: recup.$color-txt-hov;
+                border-color: transparentize(recup.$color-base-marron, 0.1);/*diminue opacité de 10%*/
+            }
+    
+}
+/*mettre les couleurs de input dans une variables 
+et continuer le code pour JS */

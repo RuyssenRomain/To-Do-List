@@ -1,0 +1,65 @@
+//color background----------------------------------
+$bg-color-container : rgba(255, 255, 255, 0.1);
+        //h1
+            $bg-color-before:  rgba(130, 202, 157, 0.6);
+        //input
+            $bg-color-input : rgba(255, 255, 255, 0.5);
+            $bg-input-hov:  rgba(255, 255, 255, 0.7);
+        //button
+            $bg-button : rgba(92, 160, 142, 1);
+            $bg-button-hover :  rgba(76, 133, 118, 1);
+        //list
+            $bg-color-li :  rgba(255, 255, 255, 0.6);
+        //other
+            $transpa : transparent;
+
+//color-------------------------------------------
+        //input
+            $color-border-input:   rgba(139, 126, 102, 0.5);
+            $color-placeholder :  rgba(78, 76, 77, 0.7);
+            $color-txt-input: rgba(35,31,32,1);
+            $color-txt-hov :  rgba(35, 31, 32, 1);
+        //buttton
+            $color-txt-button:  hsl(204, 20%, 95%);
+            $color-fa :  #ecd2b4;
+        //list
+            $color-li : #333;
+        //h1-color
+            $color-tittle : rgba(50, 50, 50, 0.7);
+            $color-base-marron: rgba(139, 126, 102, 0.8);
+
+
+
+//size------------------------------------------------
+$size-fa : 1.2rem;
+
+
+
+// padding----------------------------------------------
+$padding-container: 20px;
+$padding-button: 10px;
+
+//margin--------------------------------------------------
+$bottom-li : 10px;
+
+// width-------------------------------------------------------
+$width-container: 500px;
+
+// transition---------------------------------------------------
+$transition-bg-color : background-color 0.3s ease; 
+
+// filter----------------------------------------------
+$blur-container : blur(1px);
+
+// text-shadow----------------------------------------------
+$txt-shadow-li :  2px 2px 4px #000000;
+
+// box-shadow----------------------------------------------
+$shadow-container : 0 4px 8px 0 rgba(0, 0, 0, 0.4);
+        //button
+            $effect-active : inset 0 2px 5px rgba(0,0,0,0.3);
+        //input
+            $shadow-focus-input :  rgba(139, 126, 102, 0.5);
+//border radius---------------------------------------------
+$radius-container : 10px;
+$radius-button : 50%;

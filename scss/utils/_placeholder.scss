@@ -1,0 +1,18 @@
+@use './variables';
+
+%flex-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+// pour button 
+%button-border {
+    border: none;
+}
+%button-cursor {
+    cursor: pointer;
+}
+%button-outline {
+    outline: none;
+}
