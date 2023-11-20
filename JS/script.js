@@ -17,9 +17,11 @@
 
             //  creer un nouvel element li
               let newTodo = document.createElement('li');
-              newTodo.textContent = taskText;
+              newTodo.innerHTML = `
+                    <input type="checkbox" class="toggle-completed" id="todo-${Date.now()}">
+                    <label for="todo-${Date.now()}">${taskText}</label>
+                    <button class="delete-btn">X</button>"`
               todos.appendChild(newTodo);
-              console.log(newTodo); // RETIRER POUR PROD
 
             //effcacer le champ du texte 
             input.value = "";

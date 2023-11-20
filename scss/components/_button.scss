@@ -1,2 +1,27 @@
+@use '../utils/recup' as recup;
 
-
+.button_task {
+    position: relative;
+    background-color: recup.$bg-button; /* Une couleur verte pour s'assortir avec la nature */
+    color: recup.$color-txt-button; /* Texte blanc pour le contraste */
+    padding: 10px; /* Padding pour rendre le bouton plus grand et plus lisible */
+    border-radius: 50%; /* Bords arrondis */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2); /* Ombre subtile pour donner de la profondeur */
+    transition: recup.$transition-bg-color; /* Transition pour les interactions de survol */
+    @extend %button-cursor;
+    @extend %button-border;
+    
+    &:hover {
+        background-color: recup.$bg-button-hover;
+    }
+    
+    &:active {
+        box-shadow:recup.$effect-active; /* Effet enfoncé lors du clic */
+        transform: translateY(0.9px);
+    }
+    .fa-plus-circle {
+        font-size: recup.$size-fa;
+        color: recup.$color-fa; 
+        vertical-align: middle;
+    }
+}
