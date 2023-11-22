@@ -1,0 +1,73 @@
+// Importation des variables avec le préfixe "var"
+@use '../utils/variables' as var;
+
+.todos-container {
+  li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; // penser a appliquer le placeholder
+    background-color: var.$bg-color-li;
+    padding: 5px;
+    margin-bottom: var.$bottom-li;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: var.$radius-container;
+    
+    label {
+      flex-grow: 1;
+      margin-left: 10px;
+    }
+  }
+  
+  .toggle-completed {
+    appearance: none;
+    height: 20px;
+    width: 20px;
+    border: 1px solid var.$color-border-input;
+    border-radius: 4px;
+    position: relative;
+    cursor: pointer;
+
+    &:checked {
+      background-color: var.$bg-button;
+      &:after {
+        content: '\2713';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        text-align: center;
+        color: var.$color-txt-button;
+        line-height: 20px;
+      }
+    }
+
+    &:not(:checked) {
+      background-color: var.$transpa;
+    }
+  }
+}
+
+.filter__container {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 20px;
+
+  .filter {
+    padding: 5px 10px;
+    cursor: pointer;
+    background-color: var.$bg-color-container;
+    border-radius: var.$radius-button;
+    transition: all 0.3s ease;
+
+    &:hover {
+      background-color: var.$bg-button-hover;
+      color: var.$color-txt-button;
+    }
+  }
+
+  .filter.active {
+    background-color: var.$bg-button;
+    color: var.$color-txt-button;
+  }
+}

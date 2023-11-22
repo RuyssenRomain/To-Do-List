@@ -72,6 +72,68 @@ h1 {
   vertical-align: middle;
 }
 
+.todos-container li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: rgba(255, 255, 255, 0.6);
+  padding: 5px;
+  margin-bottom: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+}
+.todos-container li label {
+  flex-grow: 1;
+  margin-left: 10px;
+}
+.todos-container .toggle-completed {
+  appearance: none;
+  height: 20px;
+  width: 20px;
+  border: 1px solid rgba(139, 126, 102, 0.5);
+  border-radius: 4px;
+  position: relative;
+  cursor: pointer;
+}
+.todos-container .toggle-completed:checked {
+  background-color: rgb(92, 160, 142);
+}
+.todos-container .toggle-completed:checked:after {
+  content: "✓";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  text-align: center;
+  color: hsl(204, 20%, 95%);
+  line-height: 20px;
+}
+.todos-container .toggle-completed:not(:checked) {
+  background-color: transparent;
+}
+
+.filter__container {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 20px;
+}
+.filter__container .filter {
+  padding: 5px 10px;
+  cursor: pointer;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+.filter__container .filter:hover {
+  background-color: rgb(76, 133, 118);
+  color: hsl(204, 20%, 95%);
+}
+.filter__container .filter.active {
+  background-color: rgb(92, 160, 142);
+  color: hsl(204, 20%, 95%);
+}
+
 .container {
   flex-direction: column;
   background-color: rgba(255, 255, 255, 0.1);

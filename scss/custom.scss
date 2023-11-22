@@ -1,5 +1,7 @@
 @use './base/reset';
 @use './base/typographie';
 @use './components/button';
+// @use './components/li'; en commentaire pour phase de test 
+@use './components/test-style-li';
 @use './pages/home';
 
