@@ -7,16 +7,16 @@
             
             
             // ajouter une tache 
-            function addTodo (content, completed, id) {
+            function addTodo (content, completed, id = Date.now().toString()) {
+
               //declaration variable de la fonction 
-              let isNewTask, taskText, newTodo, checkboxId, checkbox, label, deleteBtn
-              
+              let isNewTask, taskText, newTodo, checkboxId, checkbox, label, deleteBtn;
+
               isNewTask = !content; // nouvelle tache
               
               //si tache nouvelle alors 
               if (isNewTask) {  
                 taskText = input.value.trim();
-                id = Date.now().toString(); // convertit en chaine pour eviter erreurs pour stockage de données
 
               }else {
                 //si on charge une tache,  utiliser le contenu de l ID
@@ -88,12 +88,11 @@
             });
 
             // pour supprimer une tache et mettre a jour le storage  
-            function deleteTask(taskelement) {
+            function deleteTask(taskElement) {            
               //suppression de l'element li du Dom
-              taskelement.remove();
-
-              //mise a jour des données 
-              saveTask();
+                taskElement.remove();
+                //mise a jour des données 
+                saveTask();
             }
             
 
@@ -130,70 +129,73 @@
 
             // ajout gestionnaire d evenenments pour les filtres
             Array.from(filters).forEach(filterElement => {
-              filterElement.addEventListener('click', function () {
-                targetFilter(filterElement.dataset.filter); // permet d acceder a la valeur de l element data
+                filterElement.addEventListener('click', function () {
+                  targetFilter(filterElement.dataset.filter); // permet d acceder a la valeur de l element data
               })
             })
-
             
+             let deleteConfirmationShown = false; // initialiser pour les affichages multiples
             // fonction permettant de switcher par catégories
             function targetFilter(filterType) {
               const tasks = document.querySelectorAll('.todos li');
-
-              tasks.forEach(task => {
-                const isChecked = task.querySelector('.toggle-completed').checked;
 
                 //affichage du filtre selectionné
                 switch (filterType) {
 
                   //affiche toute les taches 
                   case 'all':
+                    tasks.forEach(task => {
                     task.style.display = '';
+                  });
                     break;
 
                     //affiche toute les taches terminés et cochés
                   case 'completed':
-                    task.style.display = isChecked ? '' : 'none';
+                    tasks.forEach(task => {
+                      task.querySelector('.toggle-completed').checked ? task.style.display = '' : task.style.display = 'none';
+                    });
                     break;
 
                     //affiche toute les taches non terminés et non cochés
                   case 'in-progress':
-                    task.style.display = !isChecked ? '' : 'none';
+                    tasks.forEach(task => {
+                      !task.querySelector('.toggle-completed').checked ? task.style.display = '' : task.style.display = 'none';
+                    });
                     break;
 
                     //reset to do list 
                   case 'delete':
-                    task.remove();
-                    saveTask();
-                    break;
+                    // Verrou pour empêcher le message de confirmation de s'afficher plusieurs fois
+                    if (!deleteConfirmationShown && tasks.length > 0) { 
+                    deleteConfirmationShown = true; //empeche un nouvelle affichage 
+                    if (window.confirm("Êtes-vous sûr de vouloir supprimer toutes les tâches ?")) {
+                        tasks.forEach(task => task.remove());
+                        saveTask();
+                      }
+                    deleteConfirmationShown = false;
+                   }
+                  break;
                 }
 
-              })
             }
 
+               // ajout gestionnaire d'événements pour ajouter la class active
+               Array.from(filters).forEach(filter => {
+              
+                filter.addEventListener('click', () => {
+                  // Retirer la classe 'active' de tous les filtres
+                  Array.from(filters).forEach(otherFilter => {
+                    otherFilter.classList.remove('active');
+                  });
 
+                  // Ajouter la classe 'active' au filtre cliqué
+                  filter.classList.add('active');
+                });
+              });
 
         });
 
 
 
 
-// penser a faire ajout d une modale pour demander si oui suppression totale 
-// POUR APPLIQUER UNE FONCTION DE RECHERCHE DANS LA TO DO LIST  
-// Élément input pour la recherche dans la to-do list
-// var searchInput = document.getElementById('searchTasks');
-
-// // Écouteur d'événement pour la recherche en temps réel
-// searchInput.addEventListener('keyup', function(event) {
-//   var searchText = searchInput.value.toLowerCase();
-//   var tasks = document.querySelectorAll('#tasks-list li');
-
-//   tasks.forEach(function(task) {
-//     var taskText = task.textContent.toLowerCase();
-//     if (taskText.includes(searchText)) {
-//       task.style.display = ''; // La tâche correspond, on l'affiche
-//     } else {
-//       task.style.display = 'none'; // La tâche ne correspond pas, on la cache
-//     }
-//   });
-// });
+// penser a faire ajout d une modale pour remplacer le window.confirm pour demander si oui suppression totale 
